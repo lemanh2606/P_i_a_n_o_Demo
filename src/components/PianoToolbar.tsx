@@ -81,31 +81,33 @@ export function PianoToolbar({
         )}
       </div>
 
-      {/* Thanh tiến trình nằm ngang: thời gian | thanh bar */}
+      {/* Thanh tiến trình nằm ngang: thời gian | thanh slider */}
       {isDemoPlaying && (
         <div className="piano-progress">
           <span className="piano-progress__time">
             {formatTime(currentTime)} / {formatTime(duration)}
           </span>
-          <div
-            className="piano-progress__bar-wrap"
-            style={{ cursor: "pointer" }}
-            onClick={(e) => {
+          <input
+            type="range"
+            className="piano-progress__slider"
+            min={0}
+            max={duration || 1}
+            step={0.1}
+            value={currentTime}
+            onChange={(e) => {
               if (!isDemoPlaying || duration === 0) return;
-              const rect = e.currentTarget.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const ratio = Math.max(0, Math.min(1, x / rect.width));
-              const newTime = ratio * duration;
+              const newTime = parseFloat(e.target.value);
               onSeek(newTime);
             }}
-          >
-            <div
-              className="piano-progress__bar-fill"
-              style={{
-                width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%`,
-              }}
-            />
-          </div>
+            style={{
+              background: `linear-gradient(to right, #a855f7 ${
+                duration > 0 ? (currentTime / duration) * 100 : 0
+              }%, #222 ${
+                duration > 0 ? (currentTime / duration) * 100 : 0
+              }%)`,
+            }}
+            aria-label="Seek progress"
+          />
         </div>
       )}
     </div>

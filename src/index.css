@@ -205,19 +205,46 @@ body {
   min-width: 75px;
 }
 
-.piano-progress__bar-wrap {
+.piano-progress__slider {
   flex: 1;
-  height: 3px;
-  background: #222;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
   border-radius: 2px;
-  overflow: hidden;
+  outline: none;
+  cursor: pointer;
 }
 
-.piano-progress__bar-fill {
-  height: 100%;
-  background: #a855f7;
-  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
-  transition: width 0.15s linear;
+.piano-progress__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c084fc; /* Màu tím sáng (thumb) */
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.8);
+  transition: transform 0.1s ease;
+}
+
+.piano-progress__slider::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+}
+
+.piano-progress__slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: #c084fc;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.8);
+  transition: transform 0.1s ease;
+}
+
+.piano-progress__slider::-moz-range-thumb:hover {
+  transform: scale(1.3);
 }
 
 .piano-play-btn--pause {
