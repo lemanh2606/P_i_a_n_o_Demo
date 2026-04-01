@@ -37,7 +37,7 @@ function parseArgs(argv) {
   return {
     input: pathArg
       ? resolve(root, pathArg)
-      : resolve(root, "public/81127_Con-Mua-Ngang-Qua--Khanh-Linh.mid"),
+      : resolve(root, "public/92384_Cn-ma-ngang-qua.mid"),
     out: out ? resolve(root, out) : null,
     track: getNum("--track"),
     maxTime: getNum("--max-time"),
