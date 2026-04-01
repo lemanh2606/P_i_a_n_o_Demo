@@ -1,0 +1,425 @@
+/* ===================================================
+   VIRTUAL PIANO PRO — Premium White Theme
+   =================================================== */
+
+/* --- Biến toàn cục --- */
+:root {
+  --text: #475569;
+  --text-h: #0f172a;
+  --bg: #f8fafc;
+  --accent: #8b5cf6;
+  --accent-pink: #ec4899;
+
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  font: 16px/1.6 var(--sans);
+  color: var(--text);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Nền trang: trắng ấm với gradient tím/hồng nhạt --- */
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(139,92,246,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(236,72,153,0.05) 0%, transparent 50%);
+}
+
+#root {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+
+  @media (max-width: 640px) {
+    padding: 24px 12px;
+  }
+}
+
+/* --- Header --- */
+.piano-page {
+  text-align: center;
+}
+
+.piano-header {
+  margin-bottom: 36px;
+}
+
+.piano-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), var(--accent-pink));
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  padding: 5px 14px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.piano-page__title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-h);
+  margin-bottom: 6px;
+}
+
+.piano-page__hint {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+/* ===================================================
+   YAMAHA STUDIO STYLE — Professional Hardware Design
+   =================================================== */
+
+/* Vỏ đàn Piano — Matte Black hardware */
+.piano-shell {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  background: #1a1a1b; /* Màu đen nhám đặc trưng */
+  border-radius: 8px; /* Yamaha P-series có góc hơi vuông vức hơn */
+  padding: 30px 15px 15px;
+  box-shadow: 
+    0 50px 100px -20px rgba(0, 0, 0, 0.8),
+    0 20px 40px -10px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #111;
+}
+
+/* Thanh nắp đàn phẳng */
+.piano-shell__lid {
+  height: 20px;
+  margin: 0 0 35px;
+  border-radius: 4px;
+  background: #121212;
+  border-bottom: 3px solid #631010; /* Nỉ đỏ thẫm chuyên nghiệp */
+  box-shadow: inset 0 -2px 3px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo Yamaha giả lập */
+.piano-shell__lid::after {
+  content: "VIRTUAL STUDIO";
+  color: rgba(255,255,255,0.15);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+}
+
+.piano-shell__keys {
+  width: 100%;
+  padding-top: 2px;
+  background: #3e1111; /* Lớp nệm đỏ */
+  border-radius: 2px 2px 0 0;
+  min-height: 180px;
+}
+
+/* ===================================================
+   CONTROL PANEL — Yamaha Hardware Style
+   =================================================== */
+.piano-shell__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 20px;
+  gap: 20px;
+  border-bottom: 1px solid #222;
+  margin-bottom: 20px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.piano-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.piano-play-btn {
+  background: #2a2a2a;
+  color: #888;
+  border: 1px solid #333;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%; /* Nút tròn vật lý */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 
+    0 2px 4px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  font-size: 14px;
+}
+
+.piano-play-btn:hover:not(:disabled) {
+  background: #333;
+  color: #fff;
+  border-color: #444;
+}
+
+.piano-play-btn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.piano-play-btn:disabled {
+  color: #a855f7; /* Đèn LED tím khi đang hoạt động */
+  border-color: #a855f7;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.piano-progress {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #111;
+  padding: 8px 15px;
+  border-radius: 6px;
+  border: 1px solid #222;
+}
+
+.piano-progress__time {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #555;
+  min-width: 75px;
+}
+
+.piano-progress__bar-wrap {
+  flex: 1;
+  height: 3px;
+  background: #222;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.piano-progress__bar-fill {
+  height: 100%;
+  background: #a855f7;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+  transition: width 0.15s linear;
+}
+
+.piano-play-btn--pause {
+  background: #3e2b2b;
+  color: #f87171;
+}
+
+.piano-play-btn--pause:hover {
+  background: #4a3333;
+  color: #ef4444;
+}
+
+/* Nâng cấp diện mạo phím PHẲNG & KHÍT (Yamaha Style) */
+.ReactPiano__Keyboard.piano-themed {
+  background: #000;
+}
+
+.ReactPiano__Key {
+  margin: 0 !important;
+  transition: transform 0.08s ease;
+}
+
+.ReactPiano__Key--natural {
+  background: linear-gradient(to bottom, #fff 0%, #fafafa 90%, #f0f0f0 100%) !important;
+  border: 0.4px solid #ddd !important; /* Vết nứt siêu mỏng giữa các phím */
+  border-top: none !important;
+  border-radius: 0 0 3px 3px !important;
+  box-shadow: 
+    inset 0 1px 0 #fff,
+    inset -1px 0 0 rgba(0,0,0,0.03),
+    0 8px 12px rgba(0,0,0,0.15) !important;
+}
+
+.ReactPiano__Key--accidental {
+  background: linear-gradient(180deg, #2a2a2a 0%, #111 80%, #000 100%) !important;
+  border: 1px solid #000 !important;
+  border-radius: 0 0 2px 2px !important;
+  box-shadow: 
+    inset 0 1px 1px rgba(255,255,255,0.1),
+    0 12px 20px rgba(0,0,0,0.5) !important;
+  z-index: 10;
+}
+
+/* Hiệu ứng nhấn thực tế: Phím trắng */
+.ReactPiano__Key--active.ReactPiano__Key--natural {
+  background: linear-gradient(to bottom, #f2f2f2 0%, #e8e8e8 100%) !important;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1) !important;
+  transform: translateY(2px);
+}
+
+/* Hiệu ứng nhấn thực tế: Phím đen */
+.ReactPiano__Key--active.ReactPiano__Key--accidental {
+  background: #111 !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+  transform: translateY(1px);
+}
+
+/* ===================================================
+   NHÃN PHÍM — Keyboard Labels (Luôn hiển thị rõ)
+   =================================================== */
+.piano-key-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  padding-bottom: 10px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Tên nốt (C3, D4...) ) */
+.piano-key-label__note {
+  font-size: clamp(8px, 1vw, 11px);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #000; /* Nhãn màu đen đậm */
+  opacity: 1; /* Tăng độ hiển thị */
+}
+
+/* Ký tự bàn phím — Kiểu nút Keycap 3D */
+.piano-key-label__kbd {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1.1vw, 13px);
+  font-weight: 800;
+  color: #000; /* Nhãn màu đen đậm */
+  background: #fff;
+  padding: 3px 7px;
+  border-radius: 5px;
+  border: 1.5px solid #000;
+  box-shadow:
+    0 1px 0 #333,
+    0 2px 4px rgba(0,0,0,0.1);
+  line-height: 1.2;
+  min-width: 1.8em;
+  text-align: center;
+  opacity: 0.8; /* Hiển thị rõ ràng */
+  transition: all 0.2s ease;
+}
+
+/* Nhãn trên phím ĐEN */
+.ReactPiano__Key--accidental .piano-key-label__note {
+  color: rgba(255,255,255,0.3);
+  opacity: 1;
+}
+
+.ReactPiano__Key--accidental .piano-key-label__kbd {
+  background: #1e293b;
+  color: rgba(255,255,255,0.4);
+  border-color: #475569;
+  opacity: 1;
+  box-shadow:
+    0 1px 0 #000,
+    0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Nhãn khi phím ACTIVE (trắng) */
+.ReactPiano__Key--active .piano-key-label__note {
+  color: #8b5cf6;
+  opacity: 1;
+}
+
+.ReactPiano__Key--active.ReactPiano__Key--natural .piano-key-label__kbd {
+  background: #fff;
+  color: #7c3aed;
+  border-color: #7c3aed;
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(139,92,246,0.5);
+  transform: scale(1.1);
+}
+
+/* Nhãn khi phím ACTIVE (đen) */
+.ReactPiano__Key--active.ReactPiano__Key--accidental .piano-key-label__kbd {
+  background: #fff;
+  color: #4c1d95;
+  border-color: #fff;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ===================================================
+   FOOTER
+   =================================================== */
+.piano-page__footer {
+  margin-top: 36px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+/* ===================================================
+   HIỆU ỨNG AUTOPLAY — Phím nhảy khi phát Demo
+   =================================================== */
+.piano-themed--autoplay .ReactPiano__Key--active {
+  animation: key-press 0.15s ease-out;
+}
+
+@keyframes key-press {
+  0%   { transform: translateY(0); }
+  40%  { transform: translateY(3px); }
+  100% { transform: translateY(0); }
+}
+
+.piano-themed--autoplay .ReactPiano__Key--active.ReactPiano__Key--natural {
+  box-shadow:
+    0 0 24px rgba(139,92,246,0.55),
+    inset 0 0 8px rgba(255,255,255,0.3) !important;
+}
+
+.piano-themed--autoplay .ReactPiano__Key--active.ReactPiano__Key--accidental {
+  box-shadow:
+    0 0 24px rgba(109,40,217,0.5),
+    inset 0 -2px 4px rgba(255,255,255,0.1) !important;
+}
+
+/* --- Lớp phủ LOADYING --- */
+.piano-loading-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 20px;
+  color: white;
+}
+
+.piano-loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(168, 85, 247, 0.1);
+  border-top-color: #a855f7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
