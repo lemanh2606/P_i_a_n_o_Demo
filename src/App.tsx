@@ -88,7 +88,7 @@ export default function App() {
                 : "piano-themed"
             }
             width={pianoWidth}
-            keyWidthToHeight={0.22}
+            keyWidthToHeight={0.2}
             noteRange={{ first: firstNote, last: lastNote }}
             playNote={async (midi) => {
               if (!isLoaded) return;
@@ -104,7 +104,8 @@ export default function App() {
       </div>
 
       <p className="piano-page__footer">
-        Gõ đúng ký tự hiển thị dưới mỗi phím đàn (gồm cả phím số bên phải nếu có).
+        Gõ đúng ký tự hiển thị dưới mỗi phím đàn (gồm cả phím số bên phải nếu
+        có).
       </p>
     </div>
   );
